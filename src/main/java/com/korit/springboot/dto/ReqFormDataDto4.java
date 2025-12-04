@@ -7,5 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ReqFormDataDto4 {
     private String name;
     private int age;
+    /*private MultipartFile file;*/
     private MultipartFile file;
+
 }

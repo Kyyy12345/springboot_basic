@@ -71,7 +71,9 @@ public class ResponseDataController {
 
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_OCTET_STREAM) // 이진 데이터 스트림임을 명시
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition)
                 .body(resource);
     }
+    //웩..맛없어..좋은 거라 하니 꾹 참고 먹으께..
+    // 그래도 고맙당ㅋㅋㅋ이까지 와서 이러고 갔다는건 살아났다는것
 }

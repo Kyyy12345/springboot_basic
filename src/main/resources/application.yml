@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: springboot
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3309/sb_study_kyy
+    username: root
+    password: 1q2w3e4r
+
+springdoc:
+  swagger-ui:
+    path: doc
+
+# application.yml ?? (??? ??)
+
+mybatis:
+  # 1. XML Mapper ?? ?? ??
+  mapper-locations: classpath:mapper/**/*.xml
+
+  # 2. Type Alias? ??? ??? ?? (mybatis ?? ?? ?? ??)
+  type-aliases-package: com.korit.springboot.entity
+
+  # 3. MyBatis Configuration ?? (mybatis ?? ?? ?? ??)
+  configuration:
+    # 4. ?? ?? (configuration ?? ??)
+    map-underscore-to-camel-case: true
