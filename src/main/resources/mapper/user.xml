@@ -6,18 +6,17 @@
 
 <mapper namespace="com.korit.springboot.mapper.UserMapper">
     <resultMap id="userEntity" type="com.korit.springboot.entity.UserEntity">
-        <id property="userId" column="user_id"/>
-        <result property="username" column="username"/>
-        <result property="password" column="password"/>
-        <result property="name" column="name"/>
-        <result property="email" column="email"/>
+        <id property="userId" column="user_id"></id>
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
+        <result property="name" column="name"></result>
+        <result property="email" column="email"></result>
     </resultMap>
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="userId">
+    <insert id="inset" useGeneratedKeys="true" keyProperty="userId">
         insert into user_tb
         values (default, #{username}, #{password}, #{name}, #{email})
     </insert>
-    
 
     <select id="findUserByUsername" resultMap="userEntity">
         select

@@ -5,6 +5,7 @@ import com.korit.springboot.entity.UserEntity;
 import com.korit.springboot.exception.DuplicatedException;
 import com.korit.springboot.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,7 @@ public class UserService {
         return userEntity.getUserId();
 
     }*/
+
     @Transactional(rollbackFor = Exception.class)
     public int createUser(CreateUserReqDto dto) {
         UserEntity userEntity = dto.toEntity();
@@ -45,10 +47,9 @@ public class UserService {
 
     public void duplicatedUsername(String username) {
         UserEntity foundUser = userMapper.findUserByUsername(username);
-
-
         if (foundUser != null) {
-            throw new DuplicatedException("username", "이미 존재하는 사용자이름입니다.");
+            throw new DuplicatedException("username", "이미 존재함");
         }
     }
+
 }

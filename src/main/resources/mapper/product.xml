@@ -8,7 +8,7 @@
         values (default, #{product_name}, #{size}, #{price})
     </insert>
 
-    <select id="findAllProducts">
+    <select id="findAllProduct">
         select
             *
         from
