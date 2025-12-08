@@ -13,7 +13,7 @@
         <result property="email" column="email"></result>
     </resultMap>
 
-    <insert id="inset" useGeneratedKeys="true" keyProperty="userId">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="userId">
         insert into user_tb
         values (default, #{username}, #{password}, #{name}, #{email})
     </insert>
