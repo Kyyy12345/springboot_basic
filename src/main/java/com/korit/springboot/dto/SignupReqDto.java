@@ -6,9 +6,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Data
 public class SignupReqDto {
+
+
     // 정규표현식(문자열 형식 검사)
     @Pattern(regexp = "^[a-z0-9_-]{5,20}$", message = "아이디: 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.")
     private String username;
@@ -28,10 +32,10 @@ public class SignupReqDto {
 //    }
 
     // toEntity 이용 - builder - Entity 생성
-    public UserEntity toEntity() {
+    public UserEntity toEntity(BCryptPasswordEncoder passwordEncoder) {
         return UserEntity.builder()
                 .username(username)
-                .password(password)
+                .password(passwordEncoder.encode(password))
                 .name(name)
                 .email(email)
                 .build();

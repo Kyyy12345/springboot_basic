@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserMapper {
     int insert(UserEntity userEntity);
-    UserEntity findUserByUsername(@Param("username") String username);
+    UserEntity findUserByUsername(@Param("username") String username); //중복체크와 user객체 찾기
 }

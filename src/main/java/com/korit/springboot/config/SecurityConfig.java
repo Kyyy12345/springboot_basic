@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -65,7 +66,13 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", corsConfiguration); //**모든 요청을 의미
         return source;
     }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
+
 
 //레전드.....이거 진짜 어떻게 찾았지???? 이걸 찾아???
 //내가 너 완벽 파악했다 생각했는데 간파당한건가....

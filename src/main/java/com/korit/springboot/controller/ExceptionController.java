@@ -3,6 +3,8 @@ package com.korit.springboot.controller;
 import com.korit.springboot.dto.ValidErrorRespDto;
 import com.korit.springboot.exception.DuplicatedException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -39,6 +41,16 @@ public class ExceptionController {
     @ExceptionHandler(DuplicatedException.class)
     public ResponseEntity<ValidErrorRespDto> duplicatedException(DuplicatedException e) {
         return ResponseEntity.badRequest().body(e.getValidErrorRespDto());
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<Map<String, String>> authenticationException(UsernameNotFoundException e) {
+        return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<Map<String, String>> authenticationException(BadCredentialsException e) {
+        return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
     }
 
 }

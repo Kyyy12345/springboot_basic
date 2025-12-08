@@ -1,6 +1,7 @@
 package com.korit.springboot.controller;
 
 import com.korit.springboot.dto.CreateUserReqDto;
+import com.korit.springboot.dto.SigninReqDto;
 import com.korit.springboot.dto.SignupReqDto;
 import com.korit.springboot.entity.UserEntity;
 import com.korit.springboot.mapper.UserMapper;
@@ -28,5 +29,11 @@ public class AuthController {
         authService.duplicatedUsername(dto.getUsername());
         authService.signup(dto);
         return ResponseEntity.ok("회원가입 ㅊㅊ");
+    }
+
+    @PostMapping("/api/auth/signin")
+    public ResponseEntity<Map<String, String>> signin(@Valid @RequestBody SigninReqDto dto) {
+
+        return ResponseEntity.ok(Map.of("accessToken", authService.signin(dto)));
     }
 }
