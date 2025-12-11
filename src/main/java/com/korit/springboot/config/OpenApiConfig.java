@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OpenApiConfig {
-
+    // 스웨거 자물쇠 세팅
     @Bean
     public OpenAPI openAPIConfig() {
         OpenAPI openAPI = new OpenAPI();

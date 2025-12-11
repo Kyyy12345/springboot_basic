@@ -25,6 +25,7 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
+    //OncePerRequestFilter - 인증은 한번만 일어나면 됨 - 한 요청당 jwt 한번만 확인하겠다
 
     private final JwtTokenProvider jwtTokenProvider;
     private final UserMapper userMapper;

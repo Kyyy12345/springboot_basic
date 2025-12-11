@@ -39,6 +39,7 @@ public class JwtTokenProvider {
         Claims claims = null;
 
         try {
+            // parser가 토큰 -> claim으로 변환
             JwtParser jwtParser = Jwts.parser()
                     .setSigningKey(key)
                     .build();
